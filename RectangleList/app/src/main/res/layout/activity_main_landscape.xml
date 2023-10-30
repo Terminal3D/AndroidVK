@@ -16,7 +16,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toTopOf="@id/float_add_button"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="4"
+            app:spanCount="@string/landscape_columns_count"
             />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

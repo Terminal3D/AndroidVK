@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
-const val TAG = "TAG"
 
 class MainActivity : AppCompatActivity() {
 
@@ -40,14 +39,8 @@ class MainActivity : AppCompatActivity() {
     }
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        Log.i(TAG, "Instance Saved")
         outState.putSerializable("containerKey", ArrayList(container))
     }
 
-
-    override fun onDestroy() {
-        super.onDestroy()
-        Log.i(TAG, "OnDestroy")
-    }
 
 }
