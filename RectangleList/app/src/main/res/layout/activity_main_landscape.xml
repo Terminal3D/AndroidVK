@@ -14,7 +14,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/float_add_button"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="4"
             />

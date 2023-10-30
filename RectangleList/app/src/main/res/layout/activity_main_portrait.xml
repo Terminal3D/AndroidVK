@@ -14,11 +14,12 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/float_add_button"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            app:spanCount="3"
-            />
+            app:spanCount="3">
 
+
+    </androidx.recyclerview.widget.RecyclerView>
     <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/float_add_button"
             android:layout_width="wrap_content"
@@ -28,6 +29,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@android:drawable/ic_input_add"
             android:importantForAccessibility="no"/>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

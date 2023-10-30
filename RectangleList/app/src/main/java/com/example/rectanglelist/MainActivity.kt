@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -33,11 +34,10 @@ class MainActivity : AppCompatActivity() {
         addButton.setOnClickListener {
             container.add(Rectangle(container.size))
             adapter.notifyItemInserted(container.size - 1)
+            rv.smoothScrollToPosition(container.size - 1)
         }
 
     }
-
-
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         Log.i(TAG, "Instance Saved")
