@@ -29,7 +29,7 @@ class BeerViewModel(
         private set
 
     private var page by mutableStateOf(1)
-
+    private var currentBeers = mutableListOf<Beer>()
 
     init {
         getBeer()
@@ -38,16 +38,26 @@ class BeerViewModel(
     fun getBeer(maxResults: Int = 40) {
         viewModelScope.launch {
             beerUiState = BeerUiState.Loading
-            beerUiState =
-                try {
-                    BeerUiState.Success(beerRepository.getBeer(page, maxResults))
-                } catch (e: IOException) {
-                    BeerUiState.Error
-                } catch (e: HttpException) {
-                    BeerUiState.Error
-                }
+            beerUiState = try {
+                val newBeers = beerRepository.getBeer(page, maxResults)
+                currentBeers.addAll(newBeers)
+                BeerUiState.Success(currentBeers.toList())
+            } catch (e: IOException) {
+                BeerUiState.Error
+            } catch (e: HttpException) {
+                BeerUiState.Error
+            }
         }
     }
+
+
+
+    fun loadNextPage() {
+        if (beerUiState is BeerUiState.Loading) return
+        page++
+        getBeer()
+    }
+
 
     companion object {
         val Factory: ViewModelProvider.Factory = viewModelFactory {

@@ -21,24 +21,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             Hw2Theme {
-                MyApp()
+                BeerApp()
             }
         }
     }
 }
 
-
-@Composable
-fun MyApp() {
-    var showBeerApp by rememberSaveable { mutableStateOf(false) }
-
-    if (showBeerApp) {
-        BeerApp()
-    } else {
-        Button(onClick = { showBeerApp = true }) {
-            Text("Show Beer App")
-        }
-    }
-}
 
 

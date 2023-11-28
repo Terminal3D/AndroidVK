@@ -5,12 +5,14 @@ import com.example.hw2.network.BeerService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+const val BASE_URL = "https://api.punkapi.com/"
+
 interface AppContainer {
     val beerRepository : BeerRepository
 }
 
 class DefaultAppContainer : AppContainer {
-    private val BASE_URL = "https://api.punkapi.com/"
+
 
 
 

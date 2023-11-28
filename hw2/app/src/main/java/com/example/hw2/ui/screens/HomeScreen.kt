@@ -9,13 +9,15 @@ import com.example.hw2.ui.theme.BeerUiState
 fun HomeScreen(
     beerUiState: BeerUiState,
     retryAction: () -> Unit,
+    loadNextPage: () -> Unit,
     modifier: Modifier
 ) {
     when (beerUiState) {
         is BeerUiState.Loading -> LoadingScreen(modifier)
         is BeerUiState.Success -> BeerGridScreen(
             beers = beerUiState.beerSearch,
-            modifier = modifier
+            loadNextPage = loadNextPage,
+            modifier = modifier,
         )
         else -> ErrorScreen(retryAction = retryAction, modifier)
     }

@@ -40,6 +40,7 @@ fun BeerApp(
             HomeScreen(
                 beerUiState = beerViewModel.beerUiState,
                 retryAction = { beerViewModel.getBeer() },
+                loadNextPage = { beerViewModel.loadNextPage()},
                 modifier = modifier
             )
         }

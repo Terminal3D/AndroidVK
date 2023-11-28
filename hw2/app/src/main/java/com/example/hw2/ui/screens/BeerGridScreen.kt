@@ -6,8 +6,10 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.itemsIndexed
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -34,18 +36,36 @@ import com.example.hw2.data.Beer
 @Composable
 fun BeerGridScreen(
     beers: List<Beer>,
-    modifier: Modifier
+    modifier: Modifier,
+    loadNextPage: () -> Unit,
 ) {
-    LazyVerticalGrid(
-        columns = GridCells.Adaptive(150.dp),
-        contentPadding = PaddingValues(4.dp)
-    ) {
-        itemsIndexed(beers) { _, beer ->
-            BeerCard(beer = beer, modifier)
+    val listState = rememberLazyGridState()
 
+    Column(modifier = modifier.fillMaxSize()) {
+        LazyVerticalGrid(
+            state = listState,
+            columns = GridCells.Adaptive(150.dp),
+            contentPadding = PaddingValues(4.dp),
+            modifier = Modifier.weight(1f)
+        ) {
+            itemsIndexed(beers) { _, beer ->
+                if (beer != null) {
+                    BeerCard(beer = beer, Modifier.padding(4.dp))
+                }
+            }
+        }
+
+        Button(
+            onClick = { loadNextPage() },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp)
+        ) {
+            Text(stringResource(R.string.next_page))
         }
     }
 }
+
 
 
 @Composable
@@ -72,7 +92,8 @@ fun BeerCard(
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center,
-            modifier = modifier.fillMaxWidth()) {
+            modifier = modifier.fillMaxWidth()
+        ) {
             beer.name?.let {
                 Text(
                     text = it,
@@ -91,7 +112,7 @@ fun BeerCard(
                         imageVector = Icons.Default.Refresh,
                         contentDescription = "Reload Image",
                         modifier = modifier.fillMaxWidth(),
-                        )
+                    )
                 }
             } else {
                 Image(
