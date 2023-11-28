@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
             rv.smoothScrollToPosition(container.size - 1)
         }
 
+
     }
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">hw2</string>
+    <string name="base_url">https://api.punkapi.com/</string>
+    <string name="api_key">4631dc1b68msh5ed7d8cbf0f4df4p196a0ejsnb1cb3d60a082</string>
+    <string name="api_host">giphy.p.rapidapi.com</string>
+    <string name="loading">Loading</string>
+    <string name="loading_failed">Failed to load</string>
+    <string name="retry">Retry</string>
+    <string name="content_description">Beer</string>
+</resources>
