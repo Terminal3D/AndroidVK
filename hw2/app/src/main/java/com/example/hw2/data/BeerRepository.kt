@@ -14,7 +14,8 @@ class NetworkBeerRepository(private val beerService: BeerService) : BeerReposito
             response.body()?.map { apiModel ->
                 Beer(
                     name = apiModel.name,
-                    linkToPic = apiModel.imageUrl
+                    linkToPic = apiModel.imageUrl,
+                    id = apiModel.id,
                 )
             } ?: emptyList()
         } else {
